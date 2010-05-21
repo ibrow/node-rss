@@ -1,0 +1,40 @@
+----------------------------------------------------------------------
+node-rss - an RSS parser for node.
+http://github.com/ibrow/node-rss
+Rob Searles - http://www.robsearles.com
+----------------------------------------------------------------------
+node-rss makes heavy use of the node-xml module written by 
+Rob Righter - @robrighter
+http://github.com/robrighter/node-xml
+----------------------------------------------------------------------
+node-rss is released under the MIT licence
+----------------------------------------------------------------------
+See examples.js for working examples of node-rss
+
+----------------------------------------------------------------------
+TODO
+----------------------------------------------------------------------
+Lots, mainly:
+ - error checking
+ - writing tests
+ - make parsing mode robust
+ - conform to all specifications
+
+----------------------------------------------------------------------
+HISTORY
+----------------------------------------------------------------------
+21 May 2010
+Initial release, working on v0.1.95-17-g1036aa9
+----------------------------------------------------------------------
+
+----------------------------------------------------------------------
+REFERENCE
+----------------------------------------------------------------------
+RSS 2.0 specification
+http://cyber.law.harvard.edu/rss/rss.html
+
+RSS 1.0 specification
+http://web.resource.org/rss/1.0/spec
+
+Atom 1.0 specification
+http://atompub.org/2005/07/11/draft-ietf-atompub-format-10.html
