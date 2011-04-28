@@ -53,6 +53,8 @@ var parser = new xml.SaxParser(function(cb) {
 	if(in_item) {
 	    switch(current_element) 
 	    {
+      case 'pubdate':
+		articles[article_count][elem] = new Date(current_chars.replace(/^\s\s*/, '').replace(/\s\s*$/, ''));    
 	    case 'description':
 	    case 'summary':
 		articles[article_count][current_element] = current_chars.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
