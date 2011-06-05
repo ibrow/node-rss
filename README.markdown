@@ -25,7 +25,7 @@ On Debian based Linux distributions like Ubuntu, simply install using `apt-get` 
 
 ## Example
 
-```
+```javascript
 var rss = require('easyrss')
   , inspect = require('util').inspect
 
