@@ -13,7 +13,7 @@
  Rob Righter - @robrighter
  http://github.com/robrighter/node-xml
 **********************************************************************/
-var sys = require('sys'), http = require('http');
+var util = require('util'), http = require('http');
 var xml = require("./node-xml");
 
 // variable for holding the callback function which is passed to the
@@ -87,10 +87,10 @@ var parser = new xml.SaxParser(function(cb) {
 
     // @TODO handle warnings and errors properly
     cb.onWarning(function(msg) {
-	sys.puts('<WARNING>'+msg+"</WARNING>");
+	util.puts('<WARNING>'+msg+"</WARNING>");
     });
     cb.onError(function(msg) {
-	sys.puts('<ERROR>'+JSON.stringify(msg)+"</ERROR>");
+	util.puts('<ERROR>'+JSON.stringify(msg)+"</ERROR>");
     });
 });
 
@@ -120,7 +120,7 @@ exports.parseURL = function(url, cb) {
     function get_rss(url) {
 	var u = require('url'), http = require('http');
 	var parts = u.parse(url);
-	//sys.puts(JSON.stringify(parts));
+	//util.puts(JSON.stringify(parts));
 
 	// set the default port to 80
 	if(!parts.port) { parts.port = 80; }
@@ -130,8 +130,8 @@ exports.parseURL = function(url, cb) {
        	var client = http.createClient(parts.port, parts.hostname);
 	var request = client.request('GET', parts.pathname, {'host': parts.hostname});
 	request.addListener('response', function (response) {
-	    //sys.puts('STATUS: ' + response.statusCode);
-	    //sys.puts('HEADERS: ' + JSON.stringify(response.headers));
+	    //util.puts('STATUS: ' + response.statusCode);
+	    //util.puts('HEADERS: ' + JSON.stringify(response.headers));
 
 	    // check to see the type of status
 	    switch(response.statusCode) {
@@ -149,10 +149,10 @@ exports.parseURL = function(url, cb) {
 	    case 301:
 	    case 302:
 		if(redirection_level > 10) {
-		    sys.puts("too many redirects");
+		    util.puts("too many redirects");
 		}
 		else {
-		    sys.puts("redirect to "+response.headers.location);
+		    util.puts("redirect to "+response.headers.location);
 		    get_rss(response.headers.location);
 		}
 		break;
@@ -160,7 +160,7 @@ exports.parseURL = function(url, cb) {
 		/*
 		response.setEncoding('utf8');
 		response.addListener('data', function (chunk) {
-		    //sys.puts('BODY: ' + chunk);
+		    //util.puts('BODY: ' + chunk);
 		});
 */
 		break;
