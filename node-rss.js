@@ -23,7 +23,8 @@ var callback = function() {};
 // The main "meat" of this module - parses an rss feed and triggers
 // the callback when done.
 // using node-xml: http://github.com/robrighter/node-xml
-var parser = new xml.SaxParser(function(cb) {
+var parser = function() {
+    return new xml.SaxParser(function(cb) {
     var articles = Array();
     var current_element = false;
     var article_count = 0;
@@ -93,6 +94,7 @@ var parser = new xml.SaxParser(function(cb) {
 	sys.puts('<ERROR>'+JSON.stringify(msg)+"</ERROR>");
     });
 });
+};
 
 
 /**
@@ -103,7 +105,7 @@ var parser = new xml.SaxParser(function(cb) {
  */
 exports.parseFile = function(file, cb) {
     callback = cb;
-    parser.parseFile(file);
+    parser().parseFile(file);
 }
 /**
  * parseURL()
@@ -142,7 +144,7 @@ exports.parseURL = function(url, cb) {
 		    body += chunk;
 		});
 		response.addListener('end', function() {
-		    parser.parseString(body);
+		    parser().parseString(body);
 		});
 		break;
 		// redirect status returned
