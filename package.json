@@ -1,0 +1,19 @@
+{
+  "name": "easyrss",
+  "author": "Nicholas Penree <drudge@conceited.net>",
+  "description": "Easy RSS feed parsing using libxmljs",
+  "version": "0.2.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/drudge/node-easyrss.git"
+  },
+  "keywords": ["rss", "feed", "atom", "xml", "syndication"],
+  "main": "./lib/easyrss",
+  "engines": {
+    "node": ">= 0.4.0"
+  },
+  "dependencies": {
+    "libxmljs": "*"
+  },
+  "devDependencies": {}
+}
